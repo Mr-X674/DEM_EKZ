@@ -1,0 +1,1 @@
+PM> Scaffold-DbContext "Server=PC-233-09\SQLEXPRESS;Database=OSMANOV_09;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer
