@@ -1,0 +1,73 @@
+
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:AvaloniaApplicationBUDZ.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="AvaloniaApplicationBUDZ.Views.MainWindow"
+        Icon="/Assets/Icon/Lopuh.ico"
+        Title="AvaloniaApplicationBUDZ">
+
+	
+	<Window.Background>
+		<ImageBrush Source="C:\Users\student\Documents\ISP20\AvaloniaApplicationBUDZ\AvaloniaApplicationBUDZ\Assets\iMage\Лопушок.png" Opacity=".2"/>
+	</Window.Background>
+	<Design.DataContext>
+		<vm:MainWindowViewModel/>
+	</Design.DataContext>
+	<Grid ShowGridLines="true">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="45"/>
+			<RowDefinition/>
+			
+	
+		</Grid.RowDefinitions>
+		<StackPanel Grid.Row="0" HorizontalAlignment="Left" Orientation="Horizontal" Margin="6" >
+			<TextBox Text="Введитe для поиска"  Width="300" Margin="0,0,50,0"/>
+			<Image Source="C:\Users\student\Documents\ISP20\AvaloniaApplicationBUDZ\AvaloniaApplicationBUDZ\Assets\iMage\Лопушок.png" HorizontalAlignment="Left"/>
+		</StackPanel>
+		<StackPanel  Grid.Row="0" HorizontalAlignment="Right" Margin="6" Orientation="Horizontal">
+			<ComboBox PlaceholderText="Сортировка" Margin="0,0,25,0" />
+			<ComboBox PlaceholderText="Фильтрация" Margin="0,0,5,0" />
+		</StackPanel>
+	
+		<ListBox Grid.Row="1" Background="Transparent" Items="{Binding ProductMaterials}">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<Grid ShowGridLines="True">
+						
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width=".5*"/>
+							<ColumnDefinition Width="1*"/>
+							<ColumnDefinition Width="*"/>
+						</Grid.ColumnDefinitions>
+						<Image Source="{Binding Product.Image}" Grid.Column="0"/>
+						<Grid Grid.Column="1">
+						<Grid.RowDefinitions>
+							<RowDefinition/>
+							<RowDefinition/>
+							<RowDefinition/>
+						</Grid.RowDefinitions>
+						<StackPanel Orientation="Horizontal" Grid.Row="0">
+							<TextBlock Text="{Binding Product.ProductType.Title}"/>
+							<TextBlock Text=" | "/>
+							<TextBlock Text="{Binding Product.Title}" />
+							
+						
+						</StackPanel>
+							<TextBlock Text="{Binding Product.ArticleNumber }" Grid.Row="1" />
+							<TextBlock Text="{Binding Material.Title }" Grid.Row="2" />
+					</Grid>
+					<TextBlock Text="{Binding Product.MinCostForAgent, StringFormat={}{0:C}}" Grid.Column="2"/>
+					</Grid>
+
+				</DataTemplate>
+				
+			</ListBox.ItemTemplate>
+
+		</ListBox>
+	
+</Grid>
+	
+</Window>
